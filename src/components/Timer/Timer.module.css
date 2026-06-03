@@ -4,11 +4,11 @@
     align-items: center;
 
     background-color: var(--gray);
-    height: 40px;
+    height: 30px;
     padding: 0 12px;
     border-radius: 8px;
 
-    font-size: 15px;
+    font-size: 12px;
 
     border: var(--gray-mid) solid 1px;
     color: var(--gray-dark);
