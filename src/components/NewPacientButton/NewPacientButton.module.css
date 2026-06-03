@@ -1,0 +1,13 @@
+.newPacientButton {
+    background-color: var(--black);
+    color: var(--white);
+    border-radius: 8px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    cursor: pointer;
+    font-size: 15px;
+    height: 40px;
+    border: none;
+    padding: 0 10px;
+}
