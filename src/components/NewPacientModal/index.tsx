@@ -2,6 +2,7 @@ import { useState, type ChangeEvent, type FormEvent } from "react";
 import styles from "./NewPacientModal.module.css";
 import { IoClose } from "react-icons/io5";
 import { pacienteService } from "../../services/apiService";
+import NewPacientInput from "../NewPacientInput";
 
 interface NewPacientModalProps {
     onClose: () => void;
@@ -70,68 +71,64 @@ export default function NewPacientModal({ onClose, onSaved }: NewPacientModalPro
                 {/* 1. CORREÇÃO AQUI: Conectando a função ao evento de envio do formulário */}
                 <form className={styles.modalForm} onSubmit={handleSubmit}>
 
-                    <label>Nome completo</label>
-                    <input
-                        type="text"
-                        name="nome"
-                        value={formData.nome}
-                        onChange={handleChange}
-                        placeholder="Digite o nome..."
-                    />
+                    <div className={styles.modalInputs}>
+                        <NewPacientInput
+                            label="Nome completo"
+                            name="nome"
+                            value={formData.nome}
+                            onChange={handleChange}
+                            placeholder="Digite o nome..."
+                        />
 
-                    <label>CPF / RG</label>
-                    <input
-                        type="text"
-                        name="cpf_rg"
-                        value={formData.cpf_rg}
-                        onChange={handleChange}
-                        placeholder="Digite o documento..."
-                    />
+                        <NewPacientInput
+                            label="CPF / RG"
+                            name="cpf_rg"
+                            value={formData.cpf_rg}
+                            onChange={handleChange}
+                            placeholder="000.000.000-00"
+                            mask="cpf"
+                        />
 
-                    <label>Idade</label>
-                    <input
-                        type="text"
-                        name="idade"
-                        value={formData.idade}
-                        onChange={handleChange}
-                        placeholder="Digite a idade..."
-                    />
+                        <NewPacientInput
+                            label="Idade"
+                            name="idade"
+                            value={formData.idade}
+                            onChange={handleChange}
+                            placeholder="Digite a idade..."
+                        />
 
-                    <label>Sexo</label>
-                    <input
-                        type="text"
-                        name="genero"
-                        value={formData.genero}
-                        onChange={handleChange}
-                        placeholder="Digite o sexo..."
-                    />
+                        <NewPacientInput
+                            label="Sexo"
+                            name="genero"
+                            value={formData.genero}
+                            onChange={handleChange}
+                            placeholder="Digite o sexo..."
+                        />
 
-                    <label>Queixa principal</label>
-                    <input
-                        type="text"
-                        name="queixa_principal"
-                        value={formData.queixa_principal}
-                        onChange={handleChange}
-                        placeholder="Digite a queixa..."
-                    />
+                        <NewPacientInput
+                            label="Queixa principal"
+                            name="queixa_principal"
+                            value={formData.queixa_principal}
+                            onChange={handleChange}
+                            placeholder="Digite a queixa..."
+                        />
 
-                    <label>Classificação de risco (protocolo Manchester)</label>
-                    <input
-                        type="text"
-                        name="prioridade"
-                        value={formData.prioridade}
-                        onChange={handleChange}
-                        placeholder="Digite a prioridade..."
-                    />
+                        <NewPacientInput
+                            label="Classificação de risco (protocolo Manchester)"
+                            name="prioridade"
+                            value={formData.prioridade}
+                            onChange={handleChange}
+                            placeholder="Digite a prioridade..."
+                        />
 
-                    <label>Observações</label>
-                    <input
-                        type="text"
-                        name="observacoes"
-                        value={formData.observacoes}
-                        onChange={handleChange}
-                        placeholder="Digite as observações..."
-                    />
+                        <NewPacientInput
+                            label="Observações"
+                            name="observacoes"
+                            value={formData.observacoes!}
+                            onChange={handleChange}
+                            placeholder="Digite as observações..."
+                        />
+                    </div>
 
                     <div className={styles.formActions}>
                         <button type="button" onClick={onClose} className={styles.cancelButton}>
