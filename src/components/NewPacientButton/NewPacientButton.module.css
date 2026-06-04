@@ -10,4 +10,9 @@
     height: 30px;
     border: none;
     padding: 0 10px;
+    transition: background-color 0.2s;
+}
+
+.newPacientButton:hover {
+    background-color: var(--gray-dark);
 }
