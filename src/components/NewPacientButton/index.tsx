@@ -8,7 +8,6 @@ export default function NewPacientButton() {
 
   return (
     <>
-      {/* Botão que abre o modal */}
       <button 
         className={styles.newPacientButton} 
         onClick={() => setIsModalOpen(true)}
@@ -16,7 +15,6 @@ export default function NewPacientButton() {
         <FaPlus /> Novo Paciente
       </button>
 
-      {/* Renderização Condicional do Modal */}
       {isModalOpen && (
         <NewPacientModal onClose={() => setIsModalOpen(false)} />
       )}

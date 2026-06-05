@@ -14,7 +14,7 @@ interface NewPacientModalProps {
 interface formPacient {
     nome: string;
     genero: string;
-    idade: string; // Dica: mudei para string para facilitar o tratamento no input text comum
+    idade: string;
     cpf_rg: string;
     prioridade: string;
     queixa_principal: string;
@@ -70,7 +70,6 @@ export default function NewPacientModal({ onClose, onSaved }: NewPacientModalPro
                     </button>
                 </div>
 
-                {/* 1. CORREÇÃO AQUI: Conectando a função ao evento de envio do formulário */}
                 <form className={styles.modalForm} onSubmit={handleSubmit}>
 
                     <div className={styles.modalInputs}>
@@ -115,14 +114,6 @@ export default function NewPacientModal({ onClose, onSaved }: NewPacientModalPro
                                 onChange={handleChange}
                                 placeholder="Digite a queixa..."
                             />
-
-                            {/* <NewPacientInput
-                                label="Classificação de risco (protocolo Manchester)"
-                                name="prioridade"
-                                value={formData.prioridade}
-                                onChange={handleChange}
-                                placeholder="Digite a prioridade..."
-                            /> */}
 
                             <RiskLevelSelector
                                 value={formData.prioridade}
