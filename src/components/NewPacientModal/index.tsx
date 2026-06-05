@@ -31,7 +31,7 @@ export default function NewPacientModal({ onClose, onSaved }: NewPacientModalPro
         observacoes: ""
     });
 
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = event.target;
 
         setFormData((prevData) => ({
@@ -72,62 +72,68 @@ export default function NewPacientModal({ onClose, onSaved }: NewPacientModalPro
                 <form className={styles.modalForm} onSubmit={handleSubmit}>
 
                     <div className={styles.modalInputs}>
-                        <NewPacientInput
-                            label="Nome completo"
-                            name="nome"
-                            value={formData.nome}
-                            onChange={handleChange}
-                            placeholder="Digite o nome..."
-                        />
 
-                        <NewPacientInput
-                            label="CPF / RG"
-                            name="cpf_rg"
-                            value={formData.cpf_rg}
-                            onChange={handleChange}
-                            placeholder="000.000.000-00"
-                            mask="cpf"
-                        />
+                        <div className={styles.modalInputsTop}>
+                            <NewPacientInput
+                                label="Nome completo"
+                                name="nome"
+                                value={formData.nome}
+                                onChange={handleChange}
+                                placeholder="Digite o nome..."
+                            />
 
-                        <NewPacientInput
-                            label="Idade"
-                            name="idade"
-                            value={formData.idade}
-                            onChange={handleChange}
-                            placeholder="Digite a idade..."
-                        />
+                            <NewPacientInput
+                                label="CPF / RG"
+                                name="cpf_rg"
+                                value={formData.cpf_rg}
+                                onChange={handleChange}
+                                placeholder="000.000.000-00"
+                                type="cpf"
+                            />
 
-                        <NewPacientInput
-                            label="Sexo"
-                            name="genero"
-                            value={formData.genero}
-                            onChange={handleChange}
-                            placeholder="Digite o sexo..."
-                        />
+                            <NewPacientInput
+                                label="Idade"
+                                name="idade"
+                                value={formData.idade}
+                                onChange={handleChange}
+                                placeholder="Digite a idade..."
+                            />
 
-                        <NewPacientInput
-                            label="Queixa principal"
-                            name="queixa_principal"
-                            value={formData.queixa_principal}
-                            onChange={handleChange}
-                            placeholder="Digite a queixa..."
-                        />
+                            <NewPacientInput
+                                label="Sexo"
+                                name="genero"
+                                value={formData.genero}
+                                onChange={handleChange}
+                                placeholder="Digite o sexo..."
+                            />
+                        </div>
 
-                        <NewPacientInput
-                            label="Classificação de risco (protocolo Manchester)"
-                            name="prioridade"
-                            value={formData.prioridade}
-                            onChange={handleChange}
-                            placeholder="Digite a prioridade..."
-                        />
+                        <div className={styles.modalInputsBottom}>
+                            <NewPacientInput
+                                label="Queixa principal"
+                                name="queixa_principal"
+                                value={formData.queixa_principal}
+                                onChange={handleChange}
+                                placeholder="Digite a queixa..."
+                            />
 
-                        <NewPacientInput
-                            label="Observações"
-                            name="observacoes"
-                            value={formData.observacoes!}
-                            onChange={handleChange}
-                            placeholder="Digite as observações..."
-                        />
+                            <NewPacientInput
+                                label="Classificação de risco (protocolo Manchester)"
+                                name="prioridade"
+                                value={formData.prioridade}
+                                onChange={handleChange}
+                                placeholder="Digite a prioridade..."
+                            />
+
+                            <NewPacientInput
+                                label="Observações"
+                                name="observacoes"
+                                value={formData.observacoes!}
+                                onChange={handleChange}
+                                placeholder="Digite as observações..."
+                                multiline
+                            />
+                        </div>
                     </div>
 
                     <div className={styles.formActions}>
@@ -135,7 +141,7 @@ export default function NewPacientModal({ onClose, onSaved }: NewPacientModalPro
                             Cancelar
                         </button>
                         <button type="submit" className={styles.saveButton}>
-                            Salvar
+                            Registrar Triagem
                         </button>
                     </div>
                 </form>

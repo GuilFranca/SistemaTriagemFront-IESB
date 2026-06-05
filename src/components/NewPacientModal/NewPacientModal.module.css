@@ -26,7 +26,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: solid var(--gray);
+    border-bottom: solid var(--gray-mid) 0.5px;
     padding: 15px 25px;
     width: 100%;
 }
@@ -56,6 +56,71 @@
     flex-direction: column;
     gap: 15px;
     padding: 15px 25px;
+    width: 100%;
+}
+
+.modalInputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modalInputsTop {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.modalInputsBottom {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* margin-bottom: 15px; */
+}
+
+.formActions {
+    border-top: 1px solid var(--gray-mid);
+
+    padding-top: 15px;
+
+    margin-left: -25px;
+    margin-right: -25px;
+
+    padding-left: 25px;
+    padding-right: 25px;
+
+    display: flex;
+    justify-content: end;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.formActions .cancelButton {
+    font-size: 12px;
+    padding: 5px 18px;
+    background-color: var(--white);
+    color: var(--gray-dark);
+    border: 0.5px solid var(--gray-dark);
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.formActions .cancelButton:hover {
+    background-color: var(--gray);
+}
+
+.formActions .saveButton {
+    font-size: 12px;
+    padding: 8px 18px;
+    background-color: var(--black);
+    color: var(--white);
+    border: 0.5px solid var(--black);
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.formActions .saveButton:hover {
+    background-color: var(--gray-dark);
 }
 
 /* .modalForm {
