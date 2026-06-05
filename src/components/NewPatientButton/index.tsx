@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa6";
-import styles from "./NewPacientButton.module.css";
-import NewPacientModal from "../NewPacientModal";
+import styles from "./NewPatientButton.module.css";
+import NewPatientModal from "../NewPatientModal";
 
-export default function NewPacientButton() {
+export default function NewPatientButton() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -16,7 +16,7 @@ export default function NewPacientButton() {
       </button>
 
       {isModalOpen && (
-        <NewPacientModal onClose={() => setIsModalOpen(false)} />
+        <NewPatientModal onClose={() => setIsModalOpen(false)} />
       )}
     </>
   );
