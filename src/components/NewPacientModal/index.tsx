@@ -3,6 +3,8 @@ import styles from "./NewPacientModal.module.css";
 import { IoClose } from "react-icons/io5";
 import { pacienteService } from "../../services/apiService";
 import NewPacientInput from "../NewPacientInput";
+import NewPacientSelect from "../NewPacientSelect";
+import RiskLevelSelector from "../RiskLevelSelector";
 
 interface NewPacientModalProps {
     onClose: () => void;
@@ -31,7 +33,7 @@ export default function NewPacientModal({ onClose, onSaved }: NewPacientModalPro
         observacoes: ""
     });
 
-    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = event.target;
 
         setFormData((prevData) => ({
@@ -99,12 +101,9 @@ export default function NewPacientModal({ onClose, onSaved }: NewPacientModalPro
                                 placeholder="Digite a idade..."
                             />
 
-                            <NewPacientInput
-                                label="Sexo"
-                                name="genero"
+                            <NewPacientSelect
                                 value={formData.genero}
                                 onChange={handleChange}
-                                placeholder="Digite o sexo..."
                             />
                         </div>
 
@@ -117,12 +116,22 @@ export default function NewPacientModal({ onClose, onSaved }: NewPacientModalPro
                                 placeholder="Digite a queixa..."
                             />
 
-                            <NewPacientInput
+                            {/* <NewPacientInput
                                 label="Classificação de risco (protocolo Manchester)"
                                 name="prioridade"
                                 value={formData.prioridade}
                                 onChange={handleChange}
                                 placeholder="Digite a prioridade..."
+                            /> */}
+
+                            <RiskLevelSelector
+                                value={formData.prioridade}
+                                onChange={(value) =>
+                                    setFormData((prev) => ({
+                                        ...prev,
+                                        prioridade: value,
+                                    }))
+                                }
                             />
 
                             <NewPacientInput
