@@ -3,7 +3,11 @@ import { FaPlus } from "react-icons/fa6";
 import styles from "./NewPatientButton.module.css";
 import NewPatientModal from "../NewPatientModal";
 
-export default function NewPatientButton() {
+interface NewPatientButtonProps {
+  onSaved: () => void;
+}
+
+export default function NewPatientButton({ onSaved }: NewPatientButtonProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -16,7 +20,7 @@ export default function NewPatientButton() {
       </button>
 
       {isModalOpen && (
-        <NewPatientModal onClose={() => setIsModalOpen(false)} />
+        <NewPatientModal onClose={() => setIsModalOpen(false)} onSaved={onSaved} />
       )}
     </>
   );
