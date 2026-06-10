@@ -1,9 +1,9 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
-import styles from "./NewPacientModal.module.css";
+import styles from "./NewPatientModal.module.css";
 import { IoClose } from "react-icons/io5";
 import { pacienteService } from "../../services/apiService";
-import NewPacientInput from "../NewPacientInput";
-import NewPacientSelect from "../NewPacientSelect";
+import NewPacientInput from "../NewPatientInput";
+import NewPacientSelect from "../NewPatientSelect";
 import RiskLevelSelector from "../RiskLevelSelector";
 
 interface NewPacientModalProps {

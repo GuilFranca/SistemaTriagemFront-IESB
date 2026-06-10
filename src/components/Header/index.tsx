@@ -1,4 +1,4 @@
-import NewPacientButton from "../NewPacientButton";
+import NewPatientButton from "../NewPatientButton";
 import { Timer } from "../Timer";
 import styles from "./Header.module.css"
 import { FaRegHospital } from "react-icons/fa";
@@ -18,7 +18,7 @@ export default function Header() {
             
            <div className={styles.rightContainerHeader}>
                 <Timer />
-                <NewPacientButton />
+                <NewPatientButton />
             </div> 
         </header>
     )

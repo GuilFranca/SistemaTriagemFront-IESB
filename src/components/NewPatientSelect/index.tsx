@@ -1,4 +1,4 @@
-import styles from "./NewPacientSelect.module.css";
+import styles from "./NewPatientSelect.module.css";
 
 interface NewPacientSelectProps {
     value: string;

@@ -1,6 +1,6 @@
 import type { ChangeEvent } from "react";
 import { PatternFormat } from "react-number-format";
-import styles from "./NewPacientInput.module.css";
+import styles from "./NewPatientInput.module.css";
 
 interface NewPacientInputProps {
     label: string;
