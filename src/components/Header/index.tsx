@@ -3,7 +3,11 @@ import { Timer } from "../Timer";
 import styles from "./Header.module.css"
 import { FaRegHospital } from "react-icons/fa";
 
-export default function Header() {
+interface HeaderProps {
+    onPatientSaved: () => void;
+}
+
+export default function Header({ onPatientSaved }: HeaderProps) {
     return (
         <header className={styles.header}>
            <div className={styles.leftContainerHeader}>
@@ -18,7 +22,7 @@ export default function Header() {
             
            <div className={styles.rightContainerHeader}>
                 <Timer />
-                <NewPatientButton />
+                <NewPatientButton onSaved={onPatientSaved} />
             </div> 
         </header>
     )
