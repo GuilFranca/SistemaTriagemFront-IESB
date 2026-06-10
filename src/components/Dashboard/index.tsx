@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react"
 import styles from "./Dashboard.module.css"
-import { pacienteService } from "../../services/apiService";
 import PatientCard from "../PatientCard";
 
 export interface patientData {
@@ -33,26 +31,11 @@ const priorityList: priorityListType[] = [
     { priority: "nao_urgente", text: "Não Urgente", colorDot: "#7CB342", colorFont: "#7CB342", timer: "até 120 minutos" },
 ]
 
-export default function Dashboard() {
-    const [patients, setPatients] = useState<patientData[]>([]);
+interface DashboardProps {
+    patients: patientData[];
+}
 
-    useEffect(() => {
-        async function loadPatients() {
-            try {
-                const response = await pacienteService.listar();
-
-                setPatients(response.data);
-
-                console.log(response.data);
-                console.log(patients);
-            } catch (error) {
-                console.error(error);
-            }
-        }
-
-        loadPatients();
-    }, []);
-
+export default function Dashboard({ patients }: DashboardProps) {
     return (
         <main>
             <div className={styles.patientContainer}>
