@@ -37,18 +37,6 @@ export default function Dashboard() {
         loadPatients();
     }, []);
 
-
-    // useEffect(() => {
-    //     async function loadPatients() {
-    //         const response = await fetch("/api/patients");
-    //         const data = await response.json();
-
-    //         setPatients(data);
-    //     }
-
-    //     loadPatients();
-    // }, []);
-
     return (
         <div>Dashboard</div>
     )
