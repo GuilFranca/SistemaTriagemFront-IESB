@@ -1,0 +1,22 @@
+.patientContainer {
+    display: flex;
+    background-color: var(--gray);
+}
+
+.filterBoard {
+    background-color: var(--white);
+    width: 20%;
+    height: 92.5dvh;
+}
+
+.dashBoard {
+    width: 80%;
+    margin: 25px;
+}
+
+.priorityCardsContainer {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    justify-content: center;
+}
