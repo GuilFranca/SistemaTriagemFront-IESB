@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import styles from "./NewPatientModal.module.css";
 import { IoClose } from "react-icons/io5";
 import { pacienteService } from "../../services/apiService";
@@ -22,6 +22,7 @@ interface formPacient {
 }
 
 export default function NewPacientModal({ onClose, onSaved }: NewPacientModalProps) {
+    const [toastMessage, setToastMessage] = useState<string | null>(null);
 
     const [formData, setFormData] = useState<formPacient>({
         nome: "",
@@ -45,6 +46,24 @@ export default function NewPacientModal({ onClose, onSaved }: NewPacientModalPro
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        const requiredFields = [
+            { key: "nome", label: "Nome" },
+            { key: "genero", label: "Gênero" },
+            { key: "idade", label: "Idade" },
+            { key: "cpf_rg", label: "CPF / RG" },
+            { key: "prioridade", label: "Prioridade" },
+            { key: "queixa_principal", label: "Queixa principal" },
+        ] as const;
+
+        const missingField = requiredFields.find(
+            (field) => !formData[field.key] || formData[field.key].trim() === ""
+        );
+
+        if (missingField) {
+            setToastMessage(`Preencha o campo ${missingField.label} para cadastrar o paciente.`);
+            return;
+        }
+
         try {
             await pacienteService.criar({
                 ...formData,
@@ -59,6 +78,16 @@ export default function NewPacientModal({ onClose, onSaved }: NewPacientModalPro
         }
     };
 
+    useEffect(() => {
+        if (!toastMessage) return;
+
+        const timeoutId = window.setTimeout(() => {
+            setToastMessage(null);
+        }, 3000);
+
+        return () => clearTimeout(timeoutId);
+    }, [toastMessage]);
+
     return (
         <div className={styles.modalOverlay} onClick={onClose}>
             <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
@@ -71,6 +100,11 @@ export default function NewPacientModal({ onClose, onSaved }: NewPacientModalPro
                 </div>
 
                 <form className={styles.modalForm} onSubmit={handleSubmit}>
+                    {toastMessage && (
+                        <div className={styles.toastNotification}>
+                            {toastMessage}
+                        </div>
+                    )}
 
                     <div className={styles.modalInputs}>
 
