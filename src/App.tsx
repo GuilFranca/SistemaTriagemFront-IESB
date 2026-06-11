@@ -31,6 +31,7 @@ function App() {
         patients={patients}
         priorityFilter={priorityFilter}
         priorityFilterFunction={setPriorityFilter}
+        onPatientUpdated={loadPatients}
       />
     </>
   )

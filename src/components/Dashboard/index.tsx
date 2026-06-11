@@ -38,9 +38,10 @@ interface DashboardProps {
     patients: patientData[];
     priorityFilter: string;
     priorityFilterFunction: (priority: string) => void;
+    onPatientUpdated?: () => void;
 }
 
-export default function Dashboard({ patients, priorityFilter, priorityFilterFunction }: DashboardProps) {
+export default function Dashboard({ patients, priorityFilter, priorityFilterFunction, onPatientUpdated }: DashboardProps) {
 
     return (
         <main>
@@ -67,6 +68,8 @@ export default function Dashboard({ patients, priorityFilter, priorityFilterFunc
                     <PatientTable
                         priorityList={priorityList}
                         patientsList={patients}
+                        onStatusUpdated={onPatientUpdated}
+                        priorityFilter={priorityFilter}
                     />
                 </div>
             </div>

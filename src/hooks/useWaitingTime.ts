@@ -6,7 +6,11 @@ interface UseWaitingTimeReturn {
   isExceeded: boolean;
 }
 
-export function useWaitingTime(createdAt: string, limitMinutes: number | null): UseWaitingTimeReturn {
+export function useWaitingTime(
+  createdAt: string,
+  limitMinutes: number | null,
+  keepUpdating: boolean = true
+): UseWaitingTimeReturn {
   const [waitingTimeMinutes, setWaitingTimeMinutes] = useState(0);
 
   useEffect(() => {
@@ -18,14 +22,16 @@ export function useWaitingTime(createdAt: string, limitMinutes: number | null): 
       setWaitingTimeMinutes(diffMinutes);
     };
 
-    // Atualizar imediatamente
     updateWaitingTime();
 
-    // Atualizar a cada minuto
-    const timerId = setInterval(updateWaitingTime, 60000);
+    if (!keepUpdating) {
+      return;
+    }
+
+    const timerId = window.setInterval(updateWaitingTime, 60000);
 
     return () => clearInterval(timerId);
-  }, [createdAt]);
+  }, [createdAt, keepUpdating]);
 
   const hours = Math.floor(waitingTimeMinutes / 60);
   const minutes = waitingTimeMinutes % 60;
