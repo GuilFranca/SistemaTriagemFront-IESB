@@ -5,6 +5,7 @@ import { pacienteService } from "./services/apiService"
 
 function App() {
   const [patients, setPatients] = useState<patientData[]>([])
+  const [priorityFilter, setPriorityFilter] = useState<string>("todos")
 
   const loadPatients = async () => {
     try {
@@ -19,10 +20,19 @@ function App() {
     loadPatients()
   }, [])
 
+  useEffect(() => {
+    console.log(priorityFilter)
+  }, [priorityFilter])
+
   return (
     <>
       <Header onPatientSaved={loadPatients} />
-      <Dashboard patients={patients} />
+      <Dashboard
+        patients={patients}
+        priorityFilter={priorityFilter}
+        priorityFilterFunction={setPriorityFilter}
+        onPatientUpdated={loadPatients}
+      />
     </>
   )
 }

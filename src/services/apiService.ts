@@ -18,7 +18,7 @@ export const pacienteService = {
   },
 
   atualizarStatus(id: string | number, status: string) {
-    return api.patch(`/pacientes/${id}/status`, { status });
+    return api.put(`/pacientes/${id}/status`, { status });
   },
 
   remover(id: string | number) {
