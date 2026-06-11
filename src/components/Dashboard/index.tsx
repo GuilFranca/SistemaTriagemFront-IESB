@@ -1,6 +1,7 @@
 import styles from "./Dashboard.module.css"
 import PatientCard from "../PatientCard";
 import FilterButton from "../FilterButton";
+import PatientTable from "../PatientTable";
 
 export interface patientData {
     id: number,
@@ -22,23 +23,25 @@ export interface priorityListType {
     colorDot: string,
     colorFont: string,
     timer: string
+    limitTimer: number | null
 }
 
 const priorityList: priorityListType[] = [
-    { priority: "todos", text: "Em Espera", colorDot: "#1b1212", colorFont: "#312d2d", timer: "pacientes na fila" },
-    { priority: "emergencia", text: "Emergência", colorDot: "#A32D2D", colorFont: "#E24B4A", timer: "atendimento imediato" },
-    { priority: "urgente", text: "Urgente", colorDot: "#F39C12", colorFont: "#F39C12", timer: "até 10 minutos" },
-    { priority: "pouco_urgente", text: "Pouco Urgente", colorDot: "#4A90E2", colorFont: "#4A90E2", timer: "até 30 minutos" },
-    { priority: "nao_urgente", text: "Não Urgente", colorDot: "#7CB342", colorFont: "#7CB342", timer: "até 120 minutos" },
+    { priority: "todos", text: "Em Espera", colorDot: "#1b1212", colorFont: "#312d2d", timer: "pacientes na fila", limitTimer: null },
+    { priority: "emergencia", text: "Emergência", colorDot: "#A32D2D", colorFont: "#E24B4A", timer: "atendimento imediato", limitTimer: 0 },
+    { priority: "urgente", text: "Urgente", colorDot: "#F39C12", colorFont: "#F39C12", timer: "até 10 minutos", limitTimer: 10 },
+    { priority: "pouco_urgente", text: "Pouco Urgente", colorDot: "#4A90E2", colorFont: "#4A90E2", timer: "até 30 minutos", limitTimer: 30 },
+    { priority: "nao_urgente", text: "Não Urgente", colorDot: "#7CB342", colorFont: "#7CB342", timer: "até 120 minutos", limitTimer: 120 },
 ]
 
 interface DashboardProps {
     patients: patientData[];
     priorityFilter: string;
     priorityFilterFunction: (priority: string) => void;
+    onPatientUpdated?: () => void;
 }
 
-export default function Dashboard({ patients, priorityFilter, priorityFilterFunction }: DashboardProps) {
+export default function Dashboard({ patients, priorityFilter, priorityFilterFunction, onPatientUpdated }: DashboardProps) {
 
     return (
         <main>
@@ -62,9 +65,14 @@ export default function Dashboard({ patients, priorityFilter, priorityFilterFunc
                             />
                         ))}
                     </div>
+                    <PatientTable
+                        priorityList={priorityList}
+                        patientsList={patients}
+                        onStatusUpdated={onPatientUpdated}
+                        priorityFilter={priorityFilter}
+                    />
                 </div>
             </div>
-
         </main>
     )
 }
