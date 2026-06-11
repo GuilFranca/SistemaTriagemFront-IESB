@@ -149,7 +149,7 @@ export default function PatientTable({ priorityFilter, priorityList, patientsLis
 
                                 <td>
                                     <div className={styles.acoes}>
-                                        {!isFinalizado && (
+                                        {!isFinalizado ? (
                                             <>
                                                 <button
                                                     className={styles.btnVer}
@@ -172,6 +172,21 @@ export default function PatientTable({ priorityFilter, priorityList, patientsLis
                                                         Chamar
                                                     </button>
                                                 )}
+                                                <button
+                                                    className={styles.btnRemover}
+                                                    onClick={() => handleRemover(patient.id)}
+                                                >
+                                                    <FaTrashAlt />
+                                                </button>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <button
+                                                    className={styles.btnVer}
+                                                    onClick={() => handleView(patient)}
+                                                >
+                                                    Ver
+                                                </button>
                                                 <button
                                                     className={styles.btnRemover}
                                                     onClick={() => handleRemover(patient.id)}

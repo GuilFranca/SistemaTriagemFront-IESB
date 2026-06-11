@@ -10,11 +10,11 @@ interface PatientCardProps {
 export default function PatientCard({ patinentData, priority }: PatientCardProps) {
 
     let countPriority = patinentData.filter(
-        (patient) => patient.prioridade === priority.priority
+        (patient) => patient.prioridade === priority.priority && patient.status === "aguardando"
     ).length;
 
     if (priority.priority === "todos") {
-        countPriority = patinentData.length
+        countPriority = patinentData.length - patinentData.filter(patient => patient.status !== "aguardando").length;
     }
 
     return (

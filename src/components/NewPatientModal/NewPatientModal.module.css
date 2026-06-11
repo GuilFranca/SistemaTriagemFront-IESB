@@ -118,3 +118,30 @@
 .formActions .saveButton:hover {
     background-color: var(--gray-dark);
 }
+
+.toastNotification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(242, 38, 19, 0.95);
+    color: white;
+    padding: 14px 18px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1100;
+    max-width: 320px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
