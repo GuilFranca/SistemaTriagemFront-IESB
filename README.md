@@ -1,5 +1,7 @@
 # 🏥 Sistema de Triagem de Pacientes - Front-End
 
+<img width="1860" height="925" alt="image" src="https://github.com/user-attachments/assets/afa9aa8d-ad4e-4697-9f95-f588fa9cf030" />
+
 > Sistema web responsivo para gerenciamento e triagem de pacientes em atendimento médico, desenvolvido em React + TypeScript com Vite.
 > Deve consumir este [Back-End](https://github.com/carolinaarosendo/Fila-de-Atendimento/tree/feat/backend)
 
