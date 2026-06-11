@@ -1,5 +1,6 @@
 import styles from "./Dashboard.module.css"
 import PatientCard from "../PatientCard";
+import FilterButton from "../FilterButton";
 
 export interface patientData {
     id: number,
@@ -33,26 +34,37 @@ const priorityList: priorityListType[] = [
 
 interface DashboardProps {
     patients: patientData[];
+    priorityFilter: string;
+    priorityFilterFunction: (priority: string) => void;
 }
 
-export default function Dashboard({ patients }: DashboardProps) {
+export default function Dashboard({ patients, priorityFilter, priorityFilterFunction }: DashboardProps) {
+
     return (
         <main>
             <div className={styles.patientContainer}>
                 <div className={styles.filterBoard}>
-
+                    {priorityList.map((priority) => (
+                        <FilterButton
+                            key={priority.priority}
+                            priority={priority}
+                            isSelected={priorityFilter === priority.priority}
+                            onClick={priorityFilterFunction}
+                        />
+                    ))}
                 </div>
                 <div className={styles.dashBoard}>
                     <div className={styles.priorityCardsContainer}>
-                        {priorityList.map((priorityList) => (
+                        {priorityList.map((priority) => (
                             <PatientCard
                                 patinentData={patients}
-                                priority={priorityList}
+                                priority={priority}
                             />
                         ))}
                     </div>
                 </div>
             </div>
+
         </main>
     )
 }
